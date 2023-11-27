@@ -29,19 +29,21 @@ public class DatabaseSeeder {
                 tag2 = tagRepository.save(tag2);
 
                 var diary1 = new Diary(null, "Diary1", "#BF40BF", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), null, null, user1, List.of(tag1), new ArrayList<>(), new ArrayList<>());
-                var diary2 = new Diary(null, "Diary2", "#FFBFF00", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), null, null, user2, List.of(tag2), new ArrayList<>(), new ArrayList<>());
+                var diary2 = new Diary(null, "Diary2", "#FFFF00", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), null, null, user2, List.of(tag2), new ArrayList<>(), new ArrayList<>());
                 diary1 = diaryRepository.save(diary1);
                 diary2 = diaryRepository.save(diary2);
 
-                var post1 = new Post(null, "content1", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), diary1, new ArrayList<>());
-                var post2 = new Post(null, "content2", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), diary2, new ArrayList<>());
+                var post1 = new Post(null, "<h2>content1</h2>", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), diary1, new ArrayList<>());
+                var post2 = new Post(null, "<b>content2</b>", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), diary2, new ArrayList<>());
                 post1 = postRepository.save(post1);
                 post2 = postRepository.save(post2);
 
-                var attachment1 = new Attachment(null, "url1", true, false, "name1", 100L, post1);
-                var attachment2 = new Attachment(null, "url2", true, false, "name2", 200L, post2);
+                var attachment1 = new Attachment(null, "https://img.freepik.com/free-photo/digital-painting-mountain-with-colorful-tree-foreground_1340-25699.jpg", true, false, null, null, post1);
+                var attachment2 = new Attachment(null, "https://images.ctfassets.net/hrltx12pl8hq/4f6DfV5DbqaQUSw0uo0mWi/6fbcf889bdef65c5b92ffee86b13fc44/shutterstock_376532611.jpg?fit=fill&w=600&h=400", true, false, null, null, post2);
+                var attachment3 = new Attachment(null, "https://mirrors.aliyun.com/android.googlesource.com/prebuilts/sdk/current/placeholder-api.txt", false, false, "placeholder-api.txt", 2350L, post2);
                 attachment1 = attachmentRepository.save(attachment1);
                 attachment2 = attachmentRepository.save(attachment2);
+                attachment3 = attachmentRepository.save(attachment3);
             }
         };
     }
