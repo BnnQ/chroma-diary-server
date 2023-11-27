@@ -38,7 +38,9 @@ public class PermissionController
         Contributor contributor = contributorRepository.findByUserIdAndDiaryId(user.getId(), diary.getId());
 
         if (contributor == null) {
-            return null;
+            if (Objects.equals(user.getId(), diary.getAuthor().getId())) {
+                return ResponseEntity.ok(new Permission(null, true, true, true, true, null));
+            }
         }
 
         Permission permission = contributor.getPermissions();
